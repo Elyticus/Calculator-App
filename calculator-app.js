@@ -1,4 +1,4 @@
-let calculation = " ";
+let calculation = localStorage.getItem("calculation") || "";
 
 const inputEl = document.getElementById("input__el");
 
@@ -24,85 +24,95 @@ const equalBtn = document.getElementById("operator__equal");
 const clearBtn = document.getElementById("clear__btn");
 
 // Buttons____________________________________________________________
-dotPoint.addEventListener("click", function () {
-  inputEl.value += ".";
+
+dotPoint.addEventListener("click", () => {
+  updateCalculation(".");
 });
 
-numb1.addEventListener("click", function () {
-  inputEl.value += "1";
+numb1.addEventListener("click", () => {
+  updateCalculation("1");
 });
 
-numb2.addEventListener("click", function () {
-  inputEl.value += "2";
+numb2.addEventListener("click", () => {
+  updateCalculation("2");
 });
 
-numb3.addEventListener("click", function () {
-  inputEl.value += "3";
+numb3.addEventListener("click", () => {
+  updateCalculation("3");
 });
 
-numb4.addEventListener("click", function () {
-  inputEl.value += "4";
+numb4.addEventListener("click", () => {
+  updateCalculation("4");
 });
 
-numb5.addEventListener("click", function () {
-  inputEl.value += "5";
+numb5.addEventListener("click", () => {
+  updateCalculation("5");
 });
 
-numb6.addEventListener("click", function () {
-  inputEl.value += "6";
+numb6.addEventListener("click", () => {
+  updateCalculation("6");
 });
 
-numb7.addEventListener("click", function () {
-  inputEl.value += "7";
+numb7.addEventListener("click", () => {
+  updateCalculation("7");
 });
 
-numb8.addEventListener("click", function () {
-  inputEl.value += "8";
+numb8.addEventListener("click", () => {
+  updateCalculation("8");
 });
 
-numb9.addEventListener("click", function () {
-  inputEl.value += "9";
+numb9.addEventListener("click", () => {
+  updateCalculation("9");
 });
 
-numb0.addEventListener("click", function () {
-  inputEl.value += "0";
+numb0.addEventListener("click", () => {
+  updateCalculation("0");
 });
+
+// Function to update calculation
+function updateCalculation(value) {
+  inputEl.value += value;
+}
 
 // Operators____________________________________________________________
 
-// function myFunction() {
-//   let e = event || window.event; // get event object
-//   let key = e.keyCode || e.which; // get key cross-browser
-
-//   if (key < 48 || key > 57) {
-//     //if it is not a number ascii code
-//     //Prevent default action, which is inserting character
-//     if (e.preventDefault) e.preventDefault(); //normal browsers
-//     e.returnValue = false; //IE
-//   }
-// }
-
-addBtn.addEventListener("click", function () {
+addBtn.addEventListener("click", () => {
   inputEl.value += " + ";
 });
 
-substractBtn.addEventListener("click", function () {
+substractBtn.addEventListener("click", () => {
   inputEl.value += " - ";
 });
 
-multiplyBtn.addEventListener("click", function () {
+multiplyBtn.addEventListener("click", () => {
   inputEl.value += " * ";
 });
 
-divideBtn.addEventListener("click", function () {
+divideBtn.addEventListener("click", () => {
   inputEl.value += " / ";
 });
 
-equalBtn.addEventListener("click", function () {
-  calculation = eval(inputEl.value);
-  inputEl.value = calculation;
+equalBtn.addEventListener("click", () => {
+  calculationFunc();
 });
 
-clearBtn.addEventListener("click", function () {
+clearBtn.addEventListener("click", () => {
   inputEl.value = " ";
 });
+
+inputEl.addEventListener("keydown", () => {
+  if (event.key === "Enter") {
+    calculationFunc();
+  }
+});
+
+function calculationFunc() {
+  calculation = eval(inputEl.value);
+  inputEl.value = calculation;
+}
+
+// Additional function______________________________________________
+
+function saveCalculation() {
+  localStorage.setItem("calculation", calculation);
+}
