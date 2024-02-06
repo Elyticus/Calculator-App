@@ -1,0 +1,79 @@
+body {
+  overflow: hidden;
+  height: 100vh;
+  background-image: linear-gradient(135deg, #380036, #0cbaba);
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  margin: 15px 0 0;
+}
+
+.container__basic {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-bottom: 15px;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 3px;
+  color: rgb(27, 233, 248);
+  font-weight: 500;
+}
+
+.calc__buttons {
+  border-radius: 15px;
+  font-family: "Ubuntu", sans-serif;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+  border: none;
+  height: 50px;
+  width: 50px;
+}
+
+.calc__buttons:hover {
+  color: black;
+  background-color: rgb(179, 250, 137);
+  transition: ease 0.3s;
+}
+
+#input__el:focus {
+  background-color: rgb(181, 232, 255);
+}
+
+#input__el {
+  border: none;
+  padding: 0 0 0 10px;
+  outline: none;
+  width: 200px;
+  height: 35px;
+}
+
+#clear__btn {
+  border-radius: 10px;
+  border: 1px solid white;
+  letter-spacing: 2px;
+  width: 105px;
+}
+
+#clear__btn:hover {
+  background: rgb(235, 65, 99);
+  border: 1px solid black;
+}
+
+.operators {
+  font-weight: bold;
+  color: black;
+  border: 1px solid white;
+  background-color: #0cbaba;
+}
+
+.operators:hover {
+  color: white;
+  background-color: #b14aad;
+}
